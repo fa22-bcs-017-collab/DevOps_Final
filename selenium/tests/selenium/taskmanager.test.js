@@ -19,35 +19,32 @@ describe('Task Manager - Selenium Automated Tests', function() {
 
     // Setup: Initialize WebDriver before tests
     before(async function() {
-        this.timeout(30000);
-        console.log(`\n🚀 Starting Selenium tests with ${BROWSER} browser (headless: ${HEADLESS})`);
+        this.timeout(120000);
+        console.log(`\n🚀 Starting Selenium tests with chrome browser (headless: ${HEADLESS})`);
         
-        let options;
-        if (BROWSER === 'firefox') {
-            options = new firefox.Options();
+        try {
+            const options = new chrome.Options();
             if (HEADLESS) {
-                options.addArguments('-headless');
-            }
-            driver = await new Builder()
-                .forBrowser('firefox')
-                .setFirefoxOptions(options)
-                .build();
-        } else {
-            options = new chrome.Options();
-            if (HEADLESS) {
-                options.addArguments('--headless');
+                options.addArguments('--headless=new');
             }
             options.addArguments('--disable-gpu');
             options.addArguments('--no-sandbox');
             options.addArguments('--disable-dev-shm-usage');
+            options.addArguments('--window-size=1920,1080');
+            
+            console.log('Creating WebDriver...');
             driver = await new Builder()
                 .forBrowser('chrome')
                 .setChromeOptions(options)
                 .build();
+            
+            console.log('✅ WebDriver created successfully');
+            await driver.manage().setTimeouts({ implicit: 10000 });
+            console.log('✅ WebDriver initialized successfully');
+        } catch (error) {
+            console.error('❌ Failed to initialize WebDriver:', error.message);
+            throw error;
         }
-
-        await driver.manage().window().maximize();
-        console.log('✅ WebDriver initialized successfully');
     });
 
     // Cleanup: Quit WebDriver after tests

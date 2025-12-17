@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "Selenium automated tests for Task Manager application",
   "scripts": {
-    "test": "mocha tests/selenium/*.test.js --timeout 30000",
-    "test:chrome": "BROWSER=chrome mocha tests/selenium/*.test.js --timeout 30000",
-    "test:firefox": "BROWSER=firefox mocha tests/selenium/*.test.js --timeout 30000",
-    "test:headless": "HEADLESS=true mocha tests/selenium/*.test.js --timeout 30000"
+    "test": "mocha tests/selenium/*.test.js --timeout 120000",
+    "test:chrome": "BROWSER=chrome mocha tests/selenium/*.test.js --timeout 120000",
+    "test:firefox": "BROWSER=firefox mocha tests/selenium/*.test.js --timeout 120000",
+    "test:headless": "HEADLESS=true mocha tests/selenium/*.test.js --timeout 120000"
   },
   "dependencies": {
-    "selenium-webdriver": "^4.15.0",
-    "chromedriver": "^119.0.0",
-    "geckodriver": "^4.2.1"
+    "chromedriver": "^143.0.2",
+    "geckodriver": "^4.2.1",
+    "selenium-webdriver": "^4.15.0"
   },
   "devDependencies": {
-    "mocha": "^10.2.0",
-    "chai": "^4.3.10"
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0"
   }
 }

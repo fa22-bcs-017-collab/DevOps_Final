@@ -1,4 +1,4 @@
-# 🚀 STEP-BY-STEP DEPLOYMENT GUIDE
+az provider show -n Microsoft.ContainerService --query "registrationState"# 🚀 STEP-BY-STEP DEPLOYMENT GUIDE
 
 ## Current Status: Ready to Deploy ✅
 
