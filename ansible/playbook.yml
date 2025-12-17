@@ -212,7 +212,7 @@
   vars:
     docker_users:
       - ubuntu
-      - {{ ansible_user }}
+      - "{{ ansible_user }}"
   
   tasks:
     - name: Update apt cache
